@@ -24,5 +24,8 @@ install:
   - DIR=$PWD; (cd /tmp; gradle wrapper --gradle-version=5.2.1; mv .gradle gradle gradlew $DIR)
 
 script:
+  - git clone -b slice2html-mini --single-branch git://github.com/jburel/ice-builder-gradle
+  - cd ice-builder-gradle && ../gradlew publishToMavenLocal
+  - cd .. && rm -rf ice-builder-gradle
   - ./gradlew publishToMavenLocal -x javadoc
   - ./gradlew test
