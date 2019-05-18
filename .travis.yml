@@ -29,3 +29,4 @@ script:
   - cd .. && rm -rf ice-builder-gradle
   - ./gradlew publishToMavenLocal -x javadoc
   - ./gradlew test
+  - test -f build/distributions/omero-blitz-*-icedoc.zip
