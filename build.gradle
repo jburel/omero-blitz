@@ -180,9 +180,9 @@ compileSlice.dependsOn "copySliceFiles"
 compileJava.dependsOn "generateJava"
 
 task compileIcedoc(type: com.zeroc.gradle.icebuilder.slice.IceDocsTask, dependsOn: "compileSlice") {
-    source = "src/main/slice"
     outputDir = file("${iceOutputDir}")
     includeDirs = files("${generatedSliceDir}", "src/main/slice")
+    sourceDirs = files("${generatedSliceDir}", "src/main/slice")
     header = file("src/main/resources/header.txt")
     footer = file("src/main/resources/footer.txt")
 }
