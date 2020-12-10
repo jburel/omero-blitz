@@ -44,14 +44,16 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: Wrap with specified version
         run: |
+          DIR=$PWD
           gradle wrapper --gradle-version=${{ env.gradle_version }}
-          echo "gradle_dir="$PWD >> $GITHUB_ENV
+          echo "gradle_dir="$DIR >> $GITHUB_ENV
         if: ${{ env.gradle_version != '' }}
         shell: bash
       - name: Wrap without version
         run: |
+          DIR=$PWD
           gradle wrapper
-          echo "gradle_dir="$PWD >> $GITHUB_ENV
+          echo "gradle_dir="DIR >> $GITHUB_ENV
         if: ${{ env.gradle_version == '' }}
         shell: bash
       - uses: actions/checkout@v2
