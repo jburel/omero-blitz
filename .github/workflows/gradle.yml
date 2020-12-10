@@ -43,11 +43,17 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
       - name: Wrap with specified version
-        run: gradle wrapper --gradle-version=${{ env.gradle_version }}
+        run: |
+          gradle wrapper --gradle-version=${{ env.gradle_version }}
+          echo "gradle_dir="$PWD >> $GITHUB_ENV
         if: ${{ env.gradle_version != '' }}
+        shell: bash
       - name: Wrap without version
-        run: gradle wrapper
+        run: |
+          gradle wrapper
+          echo "gradle_dir="$PWD >> $GITHUB_ENV
         if: ${{ env.gradle_version == '' }}
+        shell: bash
       - uses: actions/checkout@v2
       - name: Run commands
-        run: ./gradlew ${{ env.gradle_commands }}
+        run: $gradle_dir/gradlew ${{ env.gradle_commands }}
