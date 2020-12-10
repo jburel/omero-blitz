@@ -58,7 +58,9 @@ jobs:
         if: ${{ env.gradle_version == '' }}
         shell: bash
       - name: check dir
-        run: ls $gradle_dir
+        run: |
+          echo $gradle_dir
+          ls $gradle_dir
       - uses: actions/checkout@v2
       - name: Run commands
         run: |
