@@ -54,8 +54,10 @@ jobs:
           DIR=$PWD
           gradle wrapper
           echo "gradle_dir="DIR >> $GITHUB_ENV
+          echo $DIR
         if: ${{ env.gradle_version == '' }}
         shell: bash
       - uses: actions/checkout@v2
       - name: Run commands
-        run: $gradle_dir/gradlew ${{ env.gradle_commands }}
+        run: |
+          $gradle_dir/gradlew ${{ env.gradle_commands }}
