@@ -81,4 +81,4 @@ jobs:
         if: ${{ env.gradle_version == '' }}
         shell: bash
       - name: Run commands
-        run: ./gradlew ${{ env.gradle_commands }}
+        run: gradle ${{ env.gradle_commands }}
