@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: jburel/omero-dsl-plugin
-          ref: gradle6
+          ref: gradle6-test
       - name: Publish to maven local
         run: gradle publishToMavenlocal
       - name: Checkout omero-blitz-plugin
