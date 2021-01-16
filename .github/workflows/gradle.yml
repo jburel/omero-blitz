@@ -32,7 +32,7 @@ jobs:
           repository: jburel/omero-blitz-plugin
           ref: gradle6
       - name: Publish to maven local
-          run: gradle publishToMavenlocal
+        run: gradle publishToMavenlocal
       - name: Checkout omero-model
         uses: actions/checkout@v2
         with:
