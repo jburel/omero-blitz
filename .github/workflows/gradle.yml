@@ -19,6 +19,27 @@ jobs:
       gradle_commands: build -x javadoc # default is build
       ICE_HOME: /opt/ice-3.6.5 # location where Ice is installed
     steps:
+      - name: Checkout omero-dsl
+        uses: actions/checkout@v2
+        with:
+          repository: jburel/omero-dsl-plugin
+          ref: gradle6
+      - name: Publish to maven local
+        run: gradle publishToMavenlocal
+      - name: Checkout omero-blitz-plugin
+        uses: actions/checkout@v2
+        with:
+          repository: jburel/omero-blitz-plugin
+          ref: gradle6
+      - name: Publish to maven local
+          run: gradle publishToMavenlocal
+      - name: Checkout omero-model
+        uses: actions/checkout@v2
+        with:
+          repository: jburel/omero-model
+          ref: gradle6
+      - name: Publish to maven local
+          run: gradle publishToMavenlocal
       - uses: actions/checkout@v2
       - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v1
